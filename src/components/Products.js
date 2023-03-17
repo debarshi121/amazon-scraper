@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Products = () => {
@@ -14,7 +15,7 @@ const Products = () => {
 		}
 	};
 	return (
-		<>
+		<div className="bg-gray-100 min-h-screen">
 			<div className="container mx-auto py-5">
 				<div className="grid grid-cols-3 gap-3">
 					<div className="flex">
@@ -50,7 +51,7 @@ const Products = () => {
 												<img className="w-20 rounded-full" alt="" src={p.thumbnail} />
 											</div>
 											<div className="flex-1">
-												<span className="font-medium">{p.title}</span>
+												<Link to={`/products/${p.asin}`}><span className="font-medium">{p.title}</span></Link>
 											</div>
 										</td>
 										<td className="py-3 px-6 text-left">
@@ -77,7 +78,7 @@ const Products = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 
