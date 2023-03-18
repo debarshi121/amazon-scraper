@@ -10,7 +10,7 @@ const Reviews = () => {
 		try {
 			const res = await axios.get(`http://127.0.0.1:3005/products/${params.asin}/reviews`);
 			console.log(res.data);
-			setReviews(res.data.reviews.result);
+			setReviews(res.data.result);
 		} catch (error) {
 			console.log(error);
 		}
@@ -18,11 +18,14 @@ const Reviews = () => {
 	useEffect(() => {
 		fetchReviewsByAsin();
 	}, []);
-	return (
-		<div className="bg-gray-100 min-h-screen">
-			<div className="container mx-auto py-5">Test</div>
-		</div>
-	);
+
+	if(reviews.length > 0){
+		return (
+			<div className="bg-gray-100 min-h-screen">
+				<div className="container mx-auto py-5">{reviews[0].id}</div>
+			</div>
+		);
+	}
 };
 
 export default Reviews;
