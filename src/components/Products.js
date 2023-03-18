@@ -4,11 +4,11 @@ import axios from "axios";
 
 const Products = () => {
 	const [products, setProducts] = useState([]);
-    const [keyword, setKeyword] = useState('');
+	const [keyword, setKeyword] = useState("dslr");
 	const fetchProducts = async () => {
 		setProducts([]);
 		try {
-			const res = await axios.get(`http://127.0.0.1:3000/products?keyword=${keyword}`);
+			const res = await axios.get(`http://127.0.0.1:3005/products?keyword=${keyword}`);
 			setProducts(res.data.products.result);
 		} catch (error) {
 			console.log(error);
@@ -29,7 +29,7 @@ const Products = () => {
 					</div>
 				</div>
 			</div>
-			{products.length>0 && (
+			{products.length > 0 && (
 				<div className="container mx-auto py-5">
 					<div className="bg-white shadow-md rounded overflow-x-auto">
 						<table className="table-fixed w-full">
@@ -51,7 +51,9 @@ const Products = () => {
 												<img className="w-20 rounded-full" alt="" src={p.thumbnail} />
 											</div>
 											<div className="flex-1">
-												<Link to={`/products/${p.asin}`}><span className="font-medium">{p.title}</span></Link>
+												<Link to={`/products/${p.asin}`}>
+													<span className="font-medium">{p.title}</span>
+												</Link>
 											</div>
 										</td>
 										<td className="py-3 px-6 text-left">
@@ -69,7 +71,9 @@ const Products = () => {
 											<span>{p.reviews.rating}</span>
 										</td>
 										<td className="py-3 px-6 text-center">
-											<button className="border w-28 border-blue-500 px-2 rounded-sm bg-blue-100 font-medium">{p.reviews.total_reviews} Reviews</button>
+											<Link to={`/products/${p.asin}/reviews`}>
+												<button className="border w-28 border-blue-500 px-2 rounded-sm bg-blue-100 font-medium">{p.reviews.total_reviews} Reviews</button>
+											</Link>
 										</td>
 									</tr>
 								))}
