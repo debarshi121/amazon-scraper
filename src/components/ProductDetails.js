@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
+import Reviews from "./Reviews";
 
 const ProductDetails = () => {
 	const params = useParams();
@@ -35,7 +36,7 @@ const ProductDetails = () => {
 	} else if (!loading && product) {
 		return (
 			<div className="bg-gray-100 min-h-screen py-10">
-				<div className="container bg-white mx-auto p-5 gap-5 grid grid-cols-2">
+				<div className="container bg-white mx-auto px-10 py-10 gap-5 grid grid-cols-2">
 					<div className="flex gap-5 items-center">
 						<div className="w-16 gap-1 flex flex-col">
 							{product.images.slice(0, 6).map((i, j) => {
@@ -74,6 +75,7 @@ const ProductDetails = () => {
 						</p>
 					</div>
 				</div>
+				<Reviews/>
 			</div>
 		);
 	} else {

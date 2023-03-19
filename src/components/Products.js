@@ -78,7 +78,7 @@ const Products = () => {
 											<span>{p.reviews.rating}</span>
 										</td>
 										<td className="py-3 px-6 text-center">
-											<Link to={`/products/${p.asin}/reviews`}>
+											<Link to={`/products/${p.asin}`}>
 												<span className="font-medium">{p.reviews.total_reviews} Reviews</span>
 											</Link>
 										</td>
