@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import LoadingBar from "react-top-loading-bar";
+import { ProductContext } from "../contexts/ProductContext";
+import { LoadingBarContext } from "../contexts/LoadingBarContext";
 
 const Products = () => {
-	const [progress, setProgress] = useState(0);
-	const [products, setProducts] = useState([]);
-	const [keyword, setKeyword] = useState("");
+	const { products, setProducts, keyword, setKeyword } = useContext(ProductContext);
+	const { setProgress } = useContext(LoadingBarContext);
 	const fetchProducts = async () => {
 		setProgress(10);
 		setProducts([]);
 		setProgress(20);
 		try {
-			const res = await axios.get(`http://127.0.0.1:3005/products?keyword=${keyword}`);
+			const res = await axios.get(`${process.env.REACT_APP_API_URL}/products?keyword=${keyword}`);
 			setProgress(70);
 			setProducts(res.data.products.result);
 			setProgress(100);
@@ -22,15 +22,14 @@ const Products = () => {
 	};
 	return (
 		<div className="bg-gray-100 min-h-screen">
-			<LoadingBar color="#f11946" progress={progress} onLoaderFinished={() => setProgress(0)} />
 			<div className="container mx-auto py-5">
 				<div className="grid grid-cols-3 gap-3">
 					<div className="flex">
-						<div className="px-2 py-2 border-l border-t border-b bg-gray-200">Keyword</div>
-						<input className="border px-2 py-2 flex-1" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(event) => event.keyCode === 13 && fetchProducts()} placeholder="Product name"></input>
+						<div className="px-2 py-2 border-l border-t border-b bg-slate-300">Keyword</div>
+						<input className="border px-2 py-2 flex-1 focus:outline-none " value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(event) => event.keyCode === 13 && fetchProducts()} placeholder="Product name"></input>
 					</div>
 					<div>
-						<button onClick={fetchProducts} className="border border-blue-500 px-2 py-2 rounded-sm bg-blue-100 font-medium">
+						<button onClick={fetchProducts} className="border border-gray-500 px-2 py-2 rounded-sm bg-blue-100 font-medium">
 							Get Products
 						</button>
 					</div>

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
 import Reviews from "./Reviews";
+import { LoadingBarContext } from "../contexts/LoadingBarContext";
 
 const ProductDetails = () => {
+	const { progress, setProgress } = useContext(LoadingBarContext);
 	const params = useParams();
-	const [progress, setProgress] = useState(0);
 	const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState(null);
 	const [activeImage, setActiveImage] = useState(null);
@@ -16,7 +17,7 @@ const ProductDetails = () => {
 		setProduct(null);
 		try {
 			setProgress(20);
-			const res = await axios.get(`http://127.0.0.1:3005/products/${params.asin}`);
+			const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/${params.asin}`);
 			setProgress(70);
 			setProduct(res.data.result[0]);
 			setActiveImage(res.data.result[0].main_image);
