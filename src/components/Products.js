@@ -26,7 +26,7 @@ const Products = () => {
 				<div className="grid grid-cols-3 gap-3">
 					<div className="flex">
 						<div className="px-2 py-2 border-l border-t border-b bg-slate-300">Keyword</div>
-						<input className="border px-2 py-2 flex-1 focus:outline-none " value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(event) => event.keyCode === 13 && fetchProducts()} placeholder="Product name"></input>
+						<input className="border px-2 py-2 flex-1 focus:outline-none" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyPress={(e) => e.key==="Enter" && fetchProducts()} placeholder="Product name"></input>
 					</div>
 					<div>
 						<button onClick={fetchProducts} className="border border-gray-500 px-2 py-2 rounded-sm bg-blue-100 font-medium">
