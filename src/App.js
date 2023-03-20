@@ -22,6 +22,7 @@ const App = () => {
 						<Route path="/" element={<Products />} />
 						<Route path="/products/:asin" element={<ProductDetails />} />
 						<Route path="/about" element={<About />} />
+						<Route path="*" element={<About />} />
 					</Routes>
 				</LoadingBarContext.Provider>
 			</ProductContext.Provider>
