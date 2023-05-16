@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom"
 
 function Navbar() {
 	return (
-		<>
-			<nav className="w-full py-1 bg-white border-b border-blue-400">
+		<Fragment>
+			<nav className="w-full py-1 bg-white drop-shadow-md px-3">
 				<div className="container mx-auto flex items-center justify-between">
 					<h1 className="text-xl font-medium text-blue-600">
 						<NavLink to="/">Amazon Scraper</NavLink>
@@ -23,7 +23,7 @@ function Navbar() {
 					</ul>
 				</div>
 			</nav>
-		</>
+		</Fragment>
 	);
 }
 

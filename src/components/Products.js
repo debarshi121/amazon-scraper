@@ -26,14 +26,14 @@ const Products = () => {
 		}
 	};
 	return (
-		<div className="bg-gray-100 min-h-screen">
+		<div className="bg-gray-100 min-h-screen px-3">
 			<div className="container mx-auto py-5">
-				<div className="grid grid-cols-3 gap-3">
-					<div className="flex">
+				<div className="flex flex-col md:flex-row gap-3">
+					<div className="flex md:w-6/12 lg:w-3/12">
 						<div className="px-2 py-2 border-l border-t border-b bg-slate-300">Keyword</div>
 						<input className="border px-2 py-2 flex-1 focus:outline-none" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyPress={(e) => e.key === "Enter" && fetchProducts()} placeholder="Product name"></input>
 					</div>
-					<div>
+					<div className="flex justify-center">
 						<button onClick={fetchProducts} className="border border-gray-500 px-2 py-2 rounded-sm bg-blue-100 font-medium">
 							Get Products
 						</button>

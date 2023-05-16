@@ -70,7 +70,7 @@ const Reviews = () => {
 
 										<span>{r.name}</span>
 									</div>
-									<div className="flex gap-3 items-center">
+									<div className="flex flex-col md:flex-row gap-3 md:items-center">
 										<div className="flex">
 											{[...Array(5)].map((e, i) => {
 												return (

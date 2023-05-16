@@ -37,7 +37,7 @@ const ProductDetails = () => {
 	} else if (!loading && product) {
 		return (
 			<div className="bg-gray-100 min-h-screen py-10">
-				<div className="container bg-white mx-auto px-10 py-10 gap-5 grid grid-cols-2">
+				<div className="container bg-white mx-auto px-10 py-10 gap-5 grid grid-cols-1 md:grid-cols-2">
 					<div className="flex gap-5 items-center">
 						<div className="w-16 gap-1 flex flex-col">
 							{product.images.slice(0, 6).map((i, j) => {
@@ -70,7 +70,7 @@ const ProductDetails = () => {
 						<p className="mt-5">ASIN: {product.asin}</p>
 						<p>
 							URL:{" "}
-							<a className="text-blue-500" href={product.url} target="_blank" rel="noreferrer">
+							<a className="text-blue-500 text-ellipsis" href={product.url} target="_blank" rel="noreferrer">
 								{product.url}
 							</a>
 						</p>
